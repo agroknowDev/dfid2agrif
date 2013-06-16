@@ -209,6 +209,14 @@ import net.zettadata.generator.tools.ToolboxException;
 		yybegin( DESCRIPTION ) ;
 	}
 	
+	"<dc:relation xmlns:dc=\"http://purl.org/dc/elements/1.1/\">".+"</dc:relation>"
+	{
+		relation = new Relation() ;
+		relation.setTypeOfRelation( "isPartOf" ) ;
+		relation.setTypeOfReference( "URI" ) ;
+		relation.setReference( extract( yytext() ) ) ;
+		agrif.setRelation( relation ) ;
+	}
 }
 
 <TITLE>
